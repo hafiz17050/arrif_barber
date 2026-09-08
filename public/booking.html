@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Arrif</title>
+<meta name="description" content="Book a haircut with Arrif in Singapore and pay securely via HitPay.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f7f4fb;
+  --card:#fff;
+  --ink:#17131f;
+  --muted:#766d82;
+  --line:#e7def0;
+  --purple:#7c4dff;
+  --purple2:#9f7aea;
+  --deep:#24183b;
+  --green:#2e7d56;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(124,77,255,.13),transparent 28%),
+    radial-gradient(circle at 5% 20%,rgba(159,122,234,.09),transparent 24%),
+    var(--bg);
+  color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+  font-size:14px;
+  line-height:1.55;
+  font-weight:300;
+}
+.wrap{width:min(680px,92%);margin:28px auto 48px}
+.back{font-size:11px;color:var(--muted);text-decoration:none}
+.card{
+  margin-top:11px;
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(124,77,255,.10);
+  border-radius:24px;
+  padding:25px;
+  box-shadow:0 18px 50px rgba(71,45,112,.10);
+}
+.header-row{
+  display:grid;
+  grid-template-columns:1fr 82px;
+  gap:18px;
+  align-items:start;
+  margin-bottom:18px;
+}
+.profile{
+  width:82px;height:92px;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);background:#eee;
+}
+.profile img{width:100%;height:100%;object-fit:cover}
+.eyebrow{
+  font-size:10px;text-transform:uppercase;letter-spacing:.13em;
+  color:var(--purple);font-weight:600
+}
+h1{
+  margin:4px 0 7px;
+  font-size:30px;line-height:1.08;
+  font-weight:500;letter-spacing:-.04em;color:var(--deep)
+}
+.lead{margin:0;color:var(--muted);font-size:12px;max-width:470px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{margin-bottom:12px}
+label{
+  display:block;font-size:11px;font-weight:500;
+  margin-bottom:5px;color:#4e4559
+}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fbf9ff;
+  border-radius:11px;
+  padding:10px 11px;
+  font:inherit;
+  font-size:13px;
+  color:var(--ink);
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#bca3ef;
+  box-shadow:0 0 0 3px rgba(124,77,255,.07)
+}
+.summary{
+  margin-top:18px;
+  border:1px solid #ded0f1;
+  border-radius:16px;
+  padding:15px;
+  background:linear-gradient(135deg,#faf7ff,#f5efff);
+}
+.summary-top{
+  display:flex;justify-content:space-between;gap:16px;align-items:center
+}
+.summary h3{
+  margin:0 0 2px;font-size:14px;font-weight:500;color:var(--deep)
+}
+.summary p{margin:0;color:var(--muted);font-size:10px}
+.price{
+  font-size:22px;font-weight:500;color:var(--deep);letter-spacing:-.03em;
+  white-space:nowrap
+}
+.methods{
+  display:flex;gap:7px;flex-wrap:wrap;margin-top:12px
+}
+.method{
+  border:1px solid #ded6e8;background:#fff;border-radius:999px;
+  padding:6px 9px;font-size:10px;color:#5d5368;font-weight:400
+}
+.note{
+  margin-top:11px;font-size:10px;color:var(--muted);line-height:1.5
+}
+.pay{
+  width:100%;margin-top:13px;
+  border:0;border-radius:999px;padding:11px 15px;
+  color:#fff;background:linear-gradient(135deg,var(--purple),var(--purple2));
+  box-shadow:0 9px 20px rgba(124,77,255,.20);
+  font:inherit;font-size:12px;font-weight:500;cursor:pointer
+}
+.pay:disabled{opacity:.55;cursor:not-allowed}
+.error{
+  display:none;margin-top:10px;padding:10px 11px;
+  border-radius:10px;background:#fff0f0;color:#9d3232;
+  border:1px solid #ffd4d4;font-size:11px
+}
+.secure{
+  margin-top:11px;text-align:center;color:#9a90a4;font-size:9px
+}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .card{padding:18px}
+  .header-row{grid-template-columns:1fr 70px}
+  .profile{width:70px;height:80px}
+  .summary-top{align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Back to Arrif</a>
+
+  <main class="card">
+    <div class="header-row">
+      <div>
+        <div class="eyebrow">Booking & payment</div>
+        <h1>Book a cut with Arrif.</h1>
+        <p class="lead">Choose your preferred slot, tell Arrif what you need, then continue to secure checkout.</p>
+      </div>
+      <div class="profile"><img src="arrif.jpg" alt="Arrif"></div>
+    </div>
+
+    <form id="bookingForm">
+      <div class="grid">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" required autocomplete="name" placeholder="Name">
+        </div>
+
+        <div class="field">
+          <label for="phone">WhatsApp</label>
+          <input id="phone" required autocomplete="tel" placeholder="+65...">
+        </div>
+
+        <div class="field">
+          <label for="email">Email <span style="font-weight:300;color:#999">(optional)</span></label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="Haircut">Haircut</option>
+            <option value="Fade / Taper">Fade / Taper</option>
+            <option value="Beard Tidy-up">Beard Tidy-up</option>
+            <option value="Haircut + Beard">Haircut + Beard</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="date">Preferred date</label>
+          <input id="date" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="time">Preferred time</label>
+          <input id="time" type="time" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes">Anything you want Arrif to know?</label>
+        <textarea id="notes" rows="3" maxlength="500"
+          placeholder="Example: low fade, taper, hairstyle reference, special request..."></textarea>
+      </div>
+
+      <section class="summary">
+        <div class="summary-top">
+          <div>
+            <h3>Booking payment</h3>
+            <p>Your booking details will be attached to the HitPay payment.</p>
+          </div>
+          <div class="price">S$35.00</div>
+        </div>
+
+        <div class="methods">
+          <span class="method">PayNow</span>
+          <span class="method">Debit / Credit Card</span>
+          <span class="method">E-wallets</span>
+        </div>
+
+        <div class="note">
+          HitPay will show the payment methods that are enabled and available for this merchant account.
+          Your card or banking details are entered on HitPay's secure checkout — not on this website.
+        </div>
+
+        <button class="pay" id="payBtn" type="submit">Continue to secure payment · S$35</button>
+        <div class="error" id="errorBox"></div>
+      </section>
+    </form>
+
+    <div class="secure">Secure checkout powered by HitPay</div>
+  </main>
+</div>
+
+<script>
+const form = document.getElementById("bookingForm");
+const button = document.getElementById("payBtn");
+const errorBox = document.getElementById("errorBox");
+
+function showError(message){
+  errorBox.textContent = message;
+  errorBox.style.display = "block";
+}
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  errorBox.style.display = "none";
+  button.disabled = true;
+  button.textContent = "Creating secure checkout…";
+
+  const payload = {
+    name: document.getElementById("name").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    service: document.getElementById("service").value,
+    date: document.getElementById("date").value,
+    time: document.getElementById("time").value,
+    notes: document.getElementById("notes").value.trim()
+  };
+
+  try{
+    const res = await fetch("/api/create-payment", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if(!res.ok || !data.checkout_url){
+      throw new Error(data.error || "Unable to create payment.");
+    }
+
+    window.location.href = data.checkout_url;
+  }catch(err){
+    showError(err.message || "Something went wrong. Please try again.");
+    button.disabled = false;
+    button.textContent = "Continue to secure payment · S$35";
+  }
+});
+</script>
+</body>
+</html>

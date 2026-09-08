@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payment status · Arrif</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f4fb;--card:#fff;--ink:#17131f;--muted:#766d82;--line:#e7def0;--purple:#7c4dff;--green:#287a53;--red:#a33b3b}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 80% 0%,rgba(124,77,255,.13),transparent 30%),var(--bg);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+.wrap{width:min(520px,92%);margin:70px auto}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;text-align:center;box-shadow:0 18px 50px rgba(71,45,112,.10)}
+.icon{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin:0 auto 15px;background:#eee7ff;color:var(--purple);font-size:21px;font-weight:600}
+h1{font-size:25px;letter-spacing:-.035em;margin:0 0 8px;font-weight:500}
+p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 auto 14px;max-width:380px}
+.details{margin:17px 0;text-align:left;background:#faf8fd;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:11px;color:#655b70}
+.row{display:flex;justify-content:space-between;gap:15px;padding:5px 0}
+a{display:inline-block;margin-top:5px;text-decoration:none;background:#24183b;color:#fff;border-radius:999px;padding:9px 14px;font-size:11px}
+.loading{animation:pulse 1s infinite alternate}@keyframes pulse{to{opacity:.45}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="card">
+    <div class="icon loading" id="icon">…</div>
+    <h1 id="title">Checking your payment…</h1>
+    <p id="message">We’re confirming the payment directly with HitPay.</p>
+    <div class="details" id="details" style="display:none"></div>
+    <a href="index.html">Back to Arrif</a>
+  </main>
+</div>
+
+<script>
+const q = new URLSearchParams(window.location.search);
+const requestId = q.get("reference") || q.get("request_id");
+
+const icon = document.getElementById("icon");
+const title = document.getElementById("title");
+const message = document.getElementById("message");
+const details = document.getElementById("details");
+
+function render(data){
+  icon.classList.remove("loading");
+
+  if(data.status === "completed"){
+    icon.textContent = "✓";
+    icon.style.background = "#e7f5ed";
+    icon.style.color = "#287a53";
+    title.textContent = "Payment received.";
+    message.textContent = "Thanks — your booking payment has been confirmed. Arrif can follow up on the requested slot.";
+  }else if(data.status === "failed" || data.status === "expired" || data.status === "canceled"){
+    icon.textContent = "!";
+    icon.style.background = "#fff0f0";
+    icon.style.color = "#a33b3b";
+    title.textContent = "Payment not completed.";
+    message.textContent = "The payment was not completed. You can return to booking and try again.";
+  }else{
+    icon.textContent = "…";
+    title.textContent = "Payment is still pending.";
+    message.textContent = "HitPay has not confirmed this payment yet. Please check again shortly.";
+  }
+
+  details.style.display = "block";
+  details.innerHTML = `
+    <div class="row"><span>Status</span><strong>${data.status || "-"}</strong></div>
+    <div class="row"><span>Amount</span><strong>${(data.currency || "SGD").toUpperCase()} ${data.amount || "-"}</strong></div>
+    <div class="row"><span>Reference</span><strong>${data.reference_number || "-"}</strong></div>
+  `;
+}
+
+async function check(){
+  if(!requestId){
+    icon.classList.remove("loading");
+    icon.textContent = "!";
+    title.textContent = "Payment reference missing.";
+    message.textContent = "We could not identify the payment request.";
+    return;
+  }
+
+  try{
+    const res = await fetch(`/api/payment-status?requestId=${encodeURIComponent(requestId)}`);
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error || "Unable to check payment.");
+    render(data);
+  }catch(err){
+    icon.classList.remove("loading");
+    icon.textContent = "!";
+    title.textContent = "Unable to verify payment.";
+    message.textContent = err.message;
+  }
+}
+check();
+</script>
+</body>
+</html>
