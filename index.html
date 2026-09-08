@@ -129,18 +129,36 @@ h1{
 .services{
   display:grid;grid-template-columns:repeat(3,1fr);gap:9px
 }
-.service{
-  border:1px solid var(--line);
-  background:linear-gradient(180deg,#fff,#fbf9ff);
-  border-radius:15px;padding:14px;
-  min-height:100px;
+.service{ 
+  border:1px solid var(--line); 
+  background:linear-gradient(180deg,#fff,#fbf9ff); 
+  border-radius:15px;
+  padding:0;
+  overflow:hidden;
 }
-.icon{
-  width:30px;height:30px;border-radius:10px;
-  background:var(--purple-soft);
-  display:grid;place-items:center;
-  margin-bottom:10px;color:var(--purple);font-size:14px
+
+.service img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
 }
+
+.service strong{
+  display:block;
+  font-size:13px;
+  font-weight:500;
+  color:var(--deep);
+  padding:12px 14px 0;
+}
+
+.service span{
+  display:block;
+  font-size:11px;
+  color:var(--muted);
+  padding:3px 14px 14px;
+}
+
 .service strong{display:block;font-size:13px;font-weight:500;color:var(--deep)}
 .service span{display:block;font-size:11px;color:var(--muted);margin-top:3px}
 .work-grid{
@@ -230,25 +248,27 @@ h1{
         <span>simple grooming, done properly</span>
       </div>
 
-      <div class="services">
-        <div class="service">
-          <div class="icon">✂</div>
-          <strong>Haircut</strong>
-          <span>Clean everyday cuts with a neat finish.</span>
-        </div>
+<div class="services"> 
 
-        <div class="service">
-          <div class="icon">◐</div>
-          <strong>Fade / Taper</strong>
-          <span>Soft blends, sharp edges and modern shape.</span>
-        </div>
+  <div class="service"> 
+    <img src="images/haircut.jpg" alt="Haircut service">
+    <strong>Haircut</strong> 
+    <span>Clean everyday cuts with a neat finish.</span> 
+  </div> 
 
-        <div class="service">
-          <div class="icon">⌁</div>
-          <strong>Beard Tidy-up</strong>
-          <span>Simple beard cleanup and shaping.</span>
-        </div>
-      </div>
+  <div class="service"> 
+    <img src="images/fade.jpg" alt="Fade and taper service">
+    <strong>Fade / Taper</strong> 
+    <span>Soft blends, sharp edges and modern shape.</span> 
+  </div> 
+
+  <div class="service"> 
+    <img src="images/beard.jpg" alt="Beard tidy-up service">
+    <strong>Beard Tidy-up</strong> 
+    <span>Simple beard cleanup and shaping.</span> 
+  </div> 
+
+</div>
     </section>
 
     <section class="section" id="work">
