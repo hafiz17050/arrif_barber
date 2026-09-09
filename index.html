@@ -5,440 +5,400 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Arrif — Barber in Singapore</title>
 <meta name="description" content="Arrif, barber in Singapore. Clean cuts, fades and simple grooming.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  --bg:#f3eefb;
-  --card:rgba(255,255,255,.92);
-  --card-2:rgba(248,244,255,.92);
+  --paper:#ffffff;
+  --paper-soft:rgba(255,255,255,.95);
   --ink:#1d1630;
-  --muted:#756c8a;
+  --muted:#7d7494;
   --line:#dccdf3;
   --purple:#7b4dff;
-  --purple-2:#9c7cf5;
-  --purple-3:#ede5ff;
+  --purple2:#9c7cf5;
   --deep:#261b42;
-  --shadow:0 18px 45px rgba(58,31,116,.13);
+  --bg:#0b0b0f;
+  --shadow:0 18px 38px rgba(39,23,69,.10);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  color:var(--ink);
   font-family:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
   font-size:14px;
   line-height:1.6;
   font-weight:300;
-
-  /* REAL BARBER PATTERN BACKGROUND */
-  background-color:#ddd0f5;
-  background-image:url("barber-pattern-purple.jpg");
-  background-position:center top;
-  background-size:100% auto;
-  background-repeat:repeat-y;
-  background-attachment:scroll;
-
-  min-height:100vh;
-  overflow-x:hidden;
 }
-
 a{color:inherit;text-decoration:none}
-.wrap{
-  width:min(780px,92%);
-  margin:28px auto 50px;
-  padding-top:6px;
+
+/* OUTER browser-space */
+.viewport{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:18px 0 28px;
 }
+
+/* WEBSITE CANVAS ONLY */
+.site-canvas{
+  width:min(430px,100%);
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(141,108,230,.08), rgba(141,108,230,.08)),
+    url("barber-pattern-purple.jpg") center top / cover no-repeat;
+  padding:12px 12px 16px;
+}
+
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:16px;
-  color:#3a1b60;
-  font-size:11px;
-  margin-bottom:13px;
-  text-shadow:0 1px 0 rgba(255,255,255,.5);
+  gap:10px;
+  margin:0 6px 10px;
+  color:#4d2a85;
+  font-size:9px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.10em;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:600;
-  letter-spacing:.02em;
-}
-.dot{
-  width:9px;height:9px;border-radius:50%;
-  background:linear-gradient(135deg,#fff,#dacdff);
-  box-shadow:0 0 0 4px rgba(255,255,255,.14);
-}
-.section-card{
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(92,48,142,.16);
-  border-radius:28px;
-  padding:28px;
+.card{
+  background:var(--paper-soft);
+  border:1px solid rgba(93,59,160,.10);
+  border-radius:16px;
   box-shadow:var(--shadow);
 }
-.section-card + .section-card{
-  margin-top:18px;
-}
+.card + .card{ margin-top:12px; }
+
 .hero{
   display:grid;
-  grid-template-columns:190px 1fr;
-  gap:28px;
-  align-items:center;
+  grid-template-columns:94px 1fr;
+  gap:14px;
+  padding:14px;
+  align-items:start;
 }
-.photo-wrap{position:relative}
 .photo{
-  width:190px;height:225px;border-radius:22px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.45);
-  background:#ddd;
-  box-shadow:0 10px 24px rgba(47,28,91,.18);
+  width:94px;
+  height:114px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #d9ccf1;
+  position:relative;
 }
 .photo img{
-  width:100%;height:100%;object-fit:cover;object-position:center;
+  width:100%;
+  height:100%;
+  object-fit:cover;
   display:block;
 }
 .badge{
   position:absolute;
-  left:12px;
-  bottom:12px;
-  background:rgba(35,23,61,.82);
+  left:6px;
+  bottom:6px;
+  background:#3a215f;
   color:#fff;
-  font-size:10px;
-  font-weight:500;
-  padding:6px 10px;
+  font-size:7px;
+  padding:4px 6px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
+  font-weight:600;
+}
+.hero-main{
+  display:grid;
+  grid-template-columns:1fr 74px;
+  gap:12px;
 }
 .eyebrow{
   display:inline-block;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.14em;
+  font-size:8px;
   font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
   color:var(--purple);
-  margin-bottom:7px;
+  margin-bottom:4px;
 }
 h1{
-  margin:0 0 12px;
-  font-size:40px;
+  margin:0 0 8px;
+  font-size:18px;
   line-height:1.05;
-  font-weight:700;
-  letter-spacing:-.05em;
+  letter-spacing:-.04em;
   color:var(--deep);
+  font-weight:700;
 }
 .hero p{
-  margin:0 0 8px;
-  color:#594f6d;
-  font-size:14px;
+  margin:0 0 6px;
+  font-size:10px;
+  color:#655c79;
 }
-.hero .soft{
-  color:var(--muted);
-  font-size:13px;
-}
-.hero-right{
-  display:grid;
-  grid-template-columns:1fr 110px;
-  gap:18px;
-  align-items:center;
-}
+.hero .soft{ color:var(--muted); }
 .sidewords{
-  border-left:1px solid #ddd0f2;
-  padding-left:16px;
-  color:#5f5573;
-  font-size:11px;
+  border-left:1px solid #e4d7f6;
+  padding-left:10px;
+  font-size:8px;
+  line-height:1.7;
+  color:#857b97;
   text-transform:uppercase;
-  letter-spacing:.18em;
-  line-height:2.05;
-  font-weight:500;
+  letter-spacing:.12em;
+  font-weight:600;
 }
 .hero-buttons{
   display:flex;
-  gap:10px;
+  gap:7px;
   flex-wrap:wrap;
-  margin-top:16px;
+  margin-top:9px;
 }
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:7px;
   border-radius:999px;
-  padding:10px 15px;
-  font-size:12px;
-  font-weight:500;
+  padding:7px 10px;
+  font-size:8px;
+  font-weight:600;
   border:1px solid var(--line);
 }
 .btn-primary{
   color:#fff;
   border-color:transparent;
-  background:linear-gradient(135deg,var(--purple),var(--purple-2));
-  box-shadow:0 8px 18px rgba(123,77,255,.22);
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
 }
 .btn-soft{
-  background:#f7f3ff;
-  color:var(--deep);
+  background:#f6f1ff;
+  color:#554972;
+}
+.section{
+  padding:13px;
 }
 .section-head{
   display:flex;
   justify-content:space-between;
-  align-items:end;
-  gap:12px;
-  margin-bottom:12px;
+  align-items:flex-end;
+  gap:10px;
+  margin-bottom:10px;
 }
 .section-head h2{
   margin:0;
-  font-size:19px;
-  font-weight:700;
-  letter-spacing:-.025em;
+  font-size:11px;
   color:var(--deep);
+  font-weight:700;
+  letter-spacing:-.02em;
 }
 .section-head span{
-  color:#877a9d;
-  font-size:10px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
+  color:#9a8eb5;
+  font-size:7px;
   font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.10em;
 }
 .services{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  gap:7px;
 }
 .service{
   border:1px solid var(--line);
-  border-radius:16px;
-  background:rgba(249,245,255,.93);
+  background:#fbf9ff;
+  border-radius:10px;
   overflow:hidden;
 }
 .service img{
   width:100%;
-  aspect-ratio:4/3;
+  aspect-ratio:1.15/1;
   object-fit:cover;
   display:block;
-  filter:saturate(.82) hue-rotate(-8deg);
 }
-.service-body{
-  padding:14px;
-}
+.service-body{ padding:9px; }
 .service strong{
   display:block;
+  font-size:9px;
   color:var(--deep);
-  font-size:13px;
-  font-weight:600;
+  font-weight:700;
 }
 .service span{
   display:block;
-  color:var(--muted);
-  font-size:12px;
+  font-size:7px;
+  color:#8a80a2;
   margin-top:4px;
+  line-height:1.45;
 }
 .work-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  gap:7px;
 }
 .work-card{
-  min-height:205px;
-  border-radius:16px;
-  border:1px dashed #d7c6f4;
-  background:linear-gradient(180deg,#faf7ff,#f4effd);
-  padding:12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  min-height:120px;
+  border-radius:10px;
+  border:1px dashed #d9c9f4;
+  background:linear-gradient(180deg,#faf8ff,#f5effe);
+  padding:8px;
   position:relative;
+  display:flex;
+  align-items:flex-end;
 }
-.work-card:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at center, rgba(123,77,255,.08), transparent 40%);
-}
-.placeholder-icon{
+.placeholder{
   position:absolute;
   inset:0;
   display:grid;
   place-items:center;
-  color:#c3b5de;
-  font-size:42px;
+  color:#c9bce6;
+  font-size:18px;
 }
 .work-meta{
   position:relative;
+  width:100%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
-  font-size:11px;
-  color:#8a7fa1;
+  font-size:7px;
+  color:#9a8eb6;
 }
 .arrow{
-  width:24px;height:24px;border-radius:50%;
-  background:rgba(255,255,255,.9);
-  border:1px solid #e2d5f5;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  border:1px solid #e3d6f7;
   display:grid;
   place-items:center;
-  font-size:13px;
+  background:#fff;
+  font-size:9px;
 }
 .cta{
+  padding:14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:18px;
-  border:1px solid var(--line);
-  background:linear-gradient(135deg,rgba(246,241,255,.97),rgba(238,231,255,.97));
-  border-radius:20px;
-  padding:22px;
+  gap:12px;
 }
 .cta h3{
-  margin:0 0 5px;
-  font-size:17px;
-  font-weight:700;
+  margin:0 0 4px;
+  font-size:11px;
   color:var(--deep);
+  font-weight:700;
 }
 .cta p{
   margin:0;
-  color:var(--muted);
-  font-size:12px;
-  max-width:430px;
+  font-size:8px;
+  color:#9589aa;
+  line-height:1.45;
 }
 .footer{
   text-align:center;
-  color:#f4efff;
-  font-size:10px;
-  letter-spacing:.2em;
+  margin-top:8px;
+  font-size:7px;
+  color:#f3ecff;
+  letter-spacing:.16em;
   text-transform:uppercase;
-  margin-top:14px;
-  text-shadow:0 1px 0 rgba(255,255,255,.5);
+  font-weight:500;
 }
-@media(max-width:680px){
-  .section-card{padding:18px}
-  .hero{grid-template-columns:110px 1fr;gap:16px;align-items:start}
-  .photo{width:110px;height:140px;border-radius:16px}
-  .badge{left:8px;bottom:8px;font-size:8px;padding:4px 7px}
-  .hero-right{grid-template-columns:1fr}
-  .sidewords{display:none}
-  h1{font-size:30px}
-  .services,.work-grid{grid-template-columns:1fr}
-  .cta{flex-direction:column;align-items:flex-start}
+@media(max-width:460px){
+  .viewport{padding:0}
+  .site-canvas{width:100%; min-height:100vh}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="viewport">
+  <div class="site-canvas">
 
-  <div class="topbar">
-    <div class="brand"><span class="dot"></span><span>Arrif</span></div>
-    <div>Singapore · Barber</div>
-  </div>
+    <div class="topbar">
+      <span>Arrif</span>
+      <span>Singapore · Barber</span>
+    </div>
 
-  <main class="section-card">
-    <section class="hero">
-      <div class="photo-wrap">
+    <main class="card">
+      <section class="hero">
         <div class="photo">
-          <img src="arrif.jpg" alt="Arrif, barber in Singapore">
+          <img src="arrif.jpg" alt="Arrif">
+          <div class="badge">Singapore</div>
         </div>
-        <div class="badge">Singapore</div>
-      </div>
 
-      <div class="hero-right">
-        <div>
-          <div class="eyebrow">Independent Barber</div>
-          <h1>Hey, I’m Arrif.</h1>
-          <p>I’m a barber based in Singapore. I like cuts that feel clean, sharp and easy to wear every day.</p>
-          <p class="soft">Nothing overcomplicated — just a good cut, a fresh look and something that suits you.</p>
-
-          <div class="hero-buttons">
-            <a class="btn btn-primary" href="booking.html">Book a cut →</a>
-            <a class="btn btn-soft" href="#work">See my work</a>
+        <div class="hero-main">
+          <div>
+            <div class="eyebrow">Independent Barber</div>
+            <h1>Hey, I’m Arrif.</h1>
+            <p>I’m a barber based in Singapore. I like cuts that feel clean, sharp and easy to wear every day.</p>
+            <p class="soft">Nothing overcomplicated — just a good cut, a fresh look and something that suits you.</p>
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="booking.html">Book a cut →</a>
+              <a class="btn btn-soft" href="#work">See my work</a>
+            </div>
+          </div>
+          <div class="sidewords">
+            CLEAN<br>SHARP<br>CONFIDENT<br>ALWAYS<br>A GOOD CUT
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="sidewords">
-          CLEAN<br>
-          SHARP<br>
-          CONFIDENT<br>
-          ALWAYS<br>
-          A GOOD CUT
+    <section class="card section">
+      <div class="section-head">
+        <h2>What I do</h2>
+        <span>Simple grooming, done properly</span>
+      </div>
+
+      <div class="services">
+        <article class="service">
+          <img src="arrif.jpg" alt="Haircut">
+          <div class="service-body">
+            <strong>Haircut</strong>
+            <span>Clean everyday cuts with a neat finish.</span>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="arrif.jpg" alt="Fade / Taper">
+          <div class="service-body">
+            <strong>Fade / Taper</strong>
+            <span>Soft blends, sharp edges and modern shape.</span>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="arrif.jpg" alt="Beard Tidy-up">
+          <div class="service-body">
+            <strong>Beard Tidy-up</strong>
+            <span>Simple beard cleanup and shaping.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card section" id="work">
+      <div class="section-head">
+        <h2>Recent work</h2>
+        <span>Real people. Real results.</span>
+      </div>
+
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="placeholder">✦</div>
+          <div class="work-meta"><span>cut 01</span><span class="arrow">↗</span></div>
+        </div>
+        <div class="work-card">
+          <div class="placeholder">✦</div>
+          <div class="work-meta"><span>cut 02</span><span class="arrow">↗</span></div>
+        </div>
+        <div class="work-card">
+          <div class="placeholder">✦</div>
+          <div class="work-meta"><span>cut 03</span><span class="arrow">↗</span></div>
         </div>
       </div>
     </section>
-  </main>
 
-  <section class="section-card">
-    <div class="section-head">
-      <h2>What I do</h2>
-      <span>Simple grooming, done properly</span>
-    </div>
-
-    <div class="services">
-      <article class="service">
-        <img src="arrif.jpg" alt="Haircut service">
-        <div class="service-body">
-          <strong>Haircut</strong>
-          <span>Clean everyday cuts with a neat finish.</span>
+    <section class="card">
+      <div class="cta">
+        <div>
+          <h3>Need a fresh cut?</h3>
+          <p>Send a quick booking request and Arrif can confirm the available slot with you.</p>
         </div>
-      </article>
-
-      <article class="service">
-        <img src="arrif.jpg" alt="Fade and taper service">
-        <div class="service-body">
-          <strong>Fade / Taper</strong>
-          <span>Soft blends, sharp edges and modern shape.</span>
-        </div>
-      </article>
-
-      <article class="service">
-        <img src="arrif.jpg" alt="Beard tidy-up service">
-        <div class="service-body">
-          <strong>Beard Tidy-up</strong>
-          <span>Simple beard cleanup and shaping.</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section-card" id="work">
-    <div class="section-head">
-      <h2>Recent work</h2>
-      <span>Real people. Real results.</span>
-    </div>
-
-    <div class="work-grid">
-      <div class="work-card">
-        <div class="placeholder-icon">🖼</div>
-        <div class="work-meta"><span>Cut 01</span><span class="arrow">↗</span></div>
+        <a class="btn btn-primary" href="booking.html">Book with Arrif →</a>
       </div>
+    </section>
 
-      <div class="work-card">
-        <div class="placeholder-icon">🖼</div>
-        <div class="work-meta"><span>Cut 02</span><span class="arrow">↗</span></div>
-      </div>
-
-      <div class="work-card">
-        <div class="placeholder-icon">🖼</div>
-        <div class="work-meta"><span>Cut 03</span><span class="arrow">↗</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-card">
-    <div class="cta">
-      <div>
-        <h3>Need a fresh cut?</h3>
-        <p>Send a quick booking request and Arrif can confirm the available slot with you.</p>
-      </div>
-      <a class="btn btn-primary" href="booking.html">Book with Arrif →</a>
-    </div>
-  </section>
-
-  <div class="footer">Haircuts × Good vibes × Singapore</div>
-
+    <div class="footer">Haircuts × Good vibes × Singapore</div>
+  </div>
 </div>
 </body>
 </html>

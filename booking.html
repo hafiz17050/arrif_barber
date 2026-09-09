@@ -4,265 +4,264 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Book Arrif</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  --bg:#f3eefb;
-  --card:rgba(255,255,255,.93);
+  --paper:#ffffff;
+  --paper-soft:rgba(255,255,255,.95);
   --ink:#1d1630;
-  --muted:#756c8a;
+  --muted:#7d7494;
   --line:#dccdf3;
   --purple:#7b4dff;
-  --purple-2:#9c7cf5;
+  --purple2:#9c7cf5;
   --deep:#261b42;
-  --shadow:0 18px 45px rgba(58,31,116,.13);
+  --bg:#0b0b0f;
+  --shadow:0 18px 38px rgba(39,23,69,.10);
 }
 *{box-sizing:border-box}
 body{
   margin:0;
-  color:var(--ink);
   font-family:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
   font-size:14px;
   line-height:1.55;
   font-weight:300;
-
-  /* REAL BARBER PATTERN BACKGROUND */
-  background-color:#ddd0f5;
-  background-image:url("barber-pattern-purple.jpg");
-  background-position:center top;
-  background-size:100% auto;
-  background-repeat:repeat-y;
-  background-attachment:scroll;
-
-  min-height:100vh;
-  overflow-x:hidden;
 }
-
-.wrap{
-  width:min(620px,92%);
-  margin:28px auto 48px;
+.viewport{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:18px 0 28px;
+}
+.site-canvas{
+  width:min(430px,100%);
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(141,108,230,.08), rgba(141,108,230,.08)),
+    url("barber-pattern-purple.jpg") center top / cover no-repeat;
+  padding:12px 12px 16px;
 }
 .back{
-  font-size:11px;
-  color:#3a1b60;
+  display:inline-block;
+  margin:0 6px 10px;
+  font-size:9px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.10em;
+  color:#4d2a85;
   text-decoration:none;
-  text-shadow:0 1px 0 rgba(255,255,255,.5);
 }
 .card{
-  margin-top:11px;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(92,48,142,.16);
-  border-radius:26px;
-  padding:24px;
+  background:var(--paper-soft);
+  border:1px solid rgba(93,59,160,.10);
+  border-radius:16px;
   box-shadow:var(--shadow);
+  padding:14px;
 }
 .eyebrow{
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.14em;
+  display:inline-block;
+  font-size:8px;
   font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
   color:var(--purple);
+  margin-bottom:4px;
 }
 h1{
-  margin:4px 0 7px;
-  font-size:30px;
+  margin:0 0 8px;
+  font-size:18px;
   line-height:1.08;
-  font-weight:700;
   letter-spacing:-.04em;
   color:var(--deep);
+  font-weight:700;
 }
 .lead{
-  margin:0 0 20px;
-  color:var(--muted);
-  font-size:12px;
+  margin:0 0 16px;
+  color:#7d7493;
+  font-size:10px;
 }
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:8px;
 }
-.field{
-  margin-bottom:12px;
-}
+.field{ margin-bottom:10px; }
 label{
   display:block;
-  font-size:11px;
-  font-weight:600;
   margin-bottom:5px;
-  color:#4f4662;
+  font-size:8px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#574d6d;
 }
-input,select,textarea{
+input, select, textarea{
   width:100%;
   border:1px solid var(--line);
   background:#faf7ff;
-  border-radius:12px;
-  padding:10px 11px;
+  border-radius:10px;
+  padding:9px 10px;
   font:inherit;
-  font-size:13px;
+  font-size:10px;
   color:var(--ink);
   outline:none;
 }
-input:focus,select:focus,textarea:focus{
-  border-color:#bca3ef;
-  box-shadow:0 0 0 3px rgba(123,77,255,.08);
+input:focus, select:focus, textarea:focus{
+  border-color:#bda7ef;
+  box-shadow:0 0 0 3px rgba(123,77,255,.07);
 }
 .summary{
-  margin-top:18px;
+  margin-top:12px;
   border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
-  background:linear-gradient(135deg,rgba(246,241,255,.97),rgba(238,231,255,.97));
+  border-radius:12px;
+  background:linear-gradient(135deg,#f7f2ff,#f0e8ff);
+  padding:12px;
 }
 .summary-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:16px;
+  gap:10px;
 }
 .summary h3{
-  margin:0 0 2px;
-  font-size:14px;
+  margin:0 0 3px;
+  font-size:10px;
   font-weight:700;
   color:var(--deep);
 }
 .summary p{
   margin:0;
-  color:var(--muted);
-  font-size:10px;
+  font-size:8px;
+  color:#857a9f;
 }
 .price{
-  font-size:22px;
+  font-size:18px;
   font-weight:700;
-  letter-spacing:-.03em;
   color:var(--deep);
-  white-space:nowrap;
+  letter-spacing:-.03em;
 }
 .methods{
   display:flex;
-  gap:7px;
   flex-wrap:wrap;
-  margin-top:12px;
+  gap:6px;
+  margin-top:10px;
 }
 .method{
-  border:1px solid #e2d5f5;
   background:#fff;
+  border:1px solid #e2d5f5;
   border-radius:999px;
-  padding:6px 9px;
-  font-size:10px;
-  color:#665a7f;
-  font-weight:500;
+  padding:5px 8px;
+  font-size:8px;
+  font-weight:600;
+  color:#685d81;
 }
 .note{
-  margin-top:11px;
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.5;
-}
-button{
-  border:0;
-  border-radius:999px;
-  padding:11px 15px;
-  color:#fff;
-  background:linear-gradient(135deg,var(--purple),var(--purple-2));
-  box-shadow:0 8px 18px rgba(123,77,255,.22);
-  font:inherit;
-  font-size:12px;
-  font-weight:600;
-  cursor:pointer;
+  margin-top:9px;
+  font-size:8px;
+  color:#877d9c;
+  line-height:1.45;
 }
 .pay{
   width:100%;
-  margin-top:14px;
-}
-.footer-note{
-  text-align:center;
   margin-top:12px;
-  color:#3a1b60;
-  font-size:10px;
-  text-shadow:0 1px 0 rgba(255,255,255,.5);
+  border:0;
+  border-radius:999px;
+  padding:10px 12px;
+  font:inherit;
+  font-size:9px;
+  font-weight:700;
+  color:#fff;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  cursor:pointer;
 }
-@media(max-width:560px){
+.footer{
+  text-align:center;
+  margin-top:8px;
+  font-size:7px;
+  color:#f3ecff;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+@media(max-width:460px){
+  .viewport{padding:0}
+  .site-canvas{width:100%; min-height:100vh}
   .grid{grid-template-columns:1fr}
-  .card{padding:18px}
-  .summary-top{align-items:flex-start}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="back" href="index.html">← Back to Arrif</a>
+<div class="viewport">
+  <div class="site-canvas">
+    <a class="back" href="index.html">← Back to Arrif</a>
 
-  <main class="card">
-    <div class="eyebrow">Booking request</div>
-    <h1>Book a cut with Arrif.</h1>
-    <p class="lead">A simple booking form with a matching purple theme.</p>
+    <main class="card">
+      <div class="eyebrow">Booking request</div>
+      <h1>Book a cut with Arrif.</h1>
+      <p class="lead">A simple booking form with the same compact purple-patterned look.</p>
 
-    <div class="grid">
-      <div class="field">
-        <label>Your name</label>
-        <input placeholder="Name">
-      </div>
-
-      <div class="field">
-        <label>WhatsApp</label>
-        <input placeholder="+65...">
-      </div>
-
-      <div class="field">
-        <label>Preferred date</label>
-        <input type="date">
-      </div>
-
-      <div class="field">
-        <label>Preferred time</label>
-        <input type="time">
-      </div>
-    </div>
-
-    <div class="field">
-      <label>Service</label>
-      <select>
-        <option>Haircut</option>
-        <option>Fade / Taper</option>
-        <option>Beard Tidy-up</option>
-        <option>Haircut + Beard</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Notes</label>
-      <textarea rows="3" placeholder="Example: low fade, taper, simple clean-up..."></textarea>
-    </div>
-
-    <section class="summary">
-      <div class="summary-top">
-        <div>
-          <h3>Booking payment</h3>
-          <p>Sample payment section styling only.</p>
+      <div class="grid">
+        <div class="field">
+          <label>Your name</label>
+          <input placeholder="Name">
         </div>
-        <div class="price">S$35.00</div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input placeholder="+65...">
+        </div>
+        <div class="field">
+          <label>Preferred date</label>
+          <input type="date">
+        </div>
+        <div class="field">
+          <label>Preferred time</label>
+          <input type="time">
+        </div>
       </div>
 
-      <div class="methods">
-        <span class="method">PayNow</span>
-        <span class="method">Debit / Credit Card</span>
-        <span class="method">GrabPay</span>
+      <div class="field">
+        <label>Service</label>
+        <select>
+          <option>Haircut</option>
+          <option>Fade / Taper</option>
+          <option>Beard Tidy-up</option>
+          <option>Haircut + Beard</option>
+        </select>
       </div>
 
-      <div class="note">
-        This is the HTML design version with a purple theme and patterned background.
+      <div class="field">
+        <label>Notes</label>
+        <textarea rows="3" placeholder="Example: low fade, taper, simple clean-up..."></textarea>
       </div>
 
-      <button class="pay" type="button">Continue to secure payment</button>
-    </section>
-  </main>
+      <section class="summary">
+        <div class="summary-top">
+          <div>
+            <h3>Booking payment</h3>
+            <p>Sample payment section styling only.</p>
+          </div>
+          <div class="price">S$35.00</div>
+        </div>
 
-  <div class="footer-note">Purple theme sample for Arrif barber website</div>
+        <div class="methods">
+          <span class="method">PayNow</span>
+          <span class="method">Debit / Credit Card</span>
+          <span class="method">GrabPay</span>
+        </div>
+
+        <div class="note">
+          This stays as a compact sample layout. The pattern belongs to the page canvas only, not the whole browser.
+        </div>
+
+        <button class="pay" type="button">Continue to secure payment</button>
+      </section>
+    </main>
+
+    <div class="footer">Purple theme sample for Arrif barber website</div>
+  </div>
 </div>
 </body>
 </html>
