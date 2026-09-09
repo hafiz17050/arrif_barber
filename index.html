@@ -8,57 +8,82 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#f7f4fb;
-  --card:#ffffff;
-  --ink:#17131f;
-  --muted:#766d82;
-  --line:#e7def0;
-  --purple:#7c4dff;
-  --purple2:#9f7aea;
-  --purple-soft:#eee7ff;
-  --deep:#24183b;
-  --shadow:0 18px 50px rgba(71,45,112,.10);
+  --bg:#f3eefb;
+  --card:rgba(255,255,255,.92);
+  --card-2:rgba(248,244,255,.92);
+  --ink:#1d1630;
+  --muted:#756c8a;
+  --line:#dccdf3;
+  --purple:#7b4dff;
+  --purple-2:#9c7cf5;
+  --purple-3:#ede5ff;
+  --deep:#261b42;
+  --shadow:0 18px 45px rgba(58,31,116,.13);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 85% 0%, rgba(124,77,255,.12), transparent 28%),
-    radial-gradient(circle at 5% 18%, rgba(159,122,234,.10), transparent 24%),
-    var(--bg);
   color:var(--ink);
   font-family:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
   font-size:14px;
   line-height:1.6;
   font-weight:300;
+
+  /* REAL BARBER PATTERN BACKGROUND */
+  background-color:#ddd0f5;
+  background-image:url("barber-pattern-purple.jpg");
+  background-position:center top;
+  background-size:100% auto;
+  background-repeat:repeat-y;
+  background-attachment:scroll;
+
+  min-height:100vh;
+  overflow-x:hidden;
 }
+
 a{color:inherit;text-decoration:none}
-.wrap{width:min(760px,92%);margin:26px auto 50px}
+.wrap{
+  width:min(780px,92%);
+  margin:28px auto 50px;
+  padding-top:6px;
+}
 .topbar{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  margin-bottom:12px;color:var(--muted);font-size:11px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  color:#3a1b60;
+  font-size:11px;
+  margin-bottom:13px;
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
 }
 .brand{
-  display:flex;align-items:center;gap:8px;font-weight:500;color:var(--deep);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  letter-spacing:.02em;
 }
 .dot{
   width:9px;height:9px;border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),var(--purple2));
-  box-shadow:0 0 0 5px rgba(124,77,255,.08);
+  background:linear-gradient(135deg,#fff,#dacdff);
+  box-shadow:0 0 0 4px rgba(255,255,255,.14);
 }
-.location{letter-spacing:.02em}
-.card{
-  background:rgba(255,255,255,.92);
-  border:1px solid rgba(124,77,255,.10);
-  border-radius:26px;
-  padding:26px;
+.section-card{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(92,48,142,.16);
+  border-radius:28px;
+  padding:28px;
   box-shadow:var(--shadow);
-  backdrop-filter:blur(12px);
+}
+.section-card + .section-card{
+  margin-top:18px;
 }
 .hero{
   display:grid;
@@ -69,234 +94,351 @@ a{color:inherit;text-decoration:none}
 .photo-wrap{position:relative}
 .photo{
   width:190px;height:225px;border-radius:22px;overflow:hidden;
-  border:1px solid var(--line);
-  background:#ded7e7;
-  box-shadow:0 12px 30px rgba(44,28,71,.13);
+  border:1px solid rgba(255,255,255,.45);
+  background:#ddd;
+  box-shadow:0 10px 24px rgba(47,28,91,.18);
 }
 .photo img{
-  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;
 }
 .badge{
-  position:absolute;left:12px;bottom:12px;
-  background:rgba(31,22,46,.82);color:#fff;
+  position:absolute;
+  left:12px;
+  bottom:12px;
+  background:rgba(35,23,61,.82);
+  color:#fff;
+  font-size:10px;
+  font-weight:500;
+  padding:6px 10px;
+  border-radius:999px;
   border:1px solid rgba(255,255,255,.14);
-  border-radius:999px;padding:6px 9px;
-  font-size:10px;font-weight:500;backdrop-filter:blur(8px);
 }
 .eyebrow{
   display:inline-block;
-  color:var(--purple);
   font-size:10px;
   text-transform:uppercase;
   letter-spacing:.14em;
-  font-weight:600;
+  font-weight:700;
+  color:var(--purple);
   margin-bottom:7px;
 }
 h1{
   margin:0 0 12px;
-  font-size:38px;
+  font-size:40px;
   line-height:1.05;
-  font-weight:500;
-  letter-spacing:-.045em;
+  font-weight:700;
+  letter-spacing:-.05em;
   color:var(--deep);
 }
-.hero p{margin:0 0 9px;color:#554b60;font-size:14px}
-.hero .soft{color:var(--muted);font-size:13px}
-.hero-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.hero p{
+  margin:0 0 8px;
+  color:#594f6d;
+  font-size:14px;
+}
+.hero .soft{
+  color:var(--muted);
+  font-size:13px;
+}
+.hero-right{
+  display:grid;
+  grid-template-columns:1fr 110px;
+  gap:18px;
+  align-items:center;
+}
+.sidewords{
+  border-left:1px solid #ddd0f2;
+  padding-left:16px;
+  color:#5f5573;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  line-height:2.05;
+  font-weight:500;
+}
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  border-radius:999px;padding:9px 13px;font-size:11px;font-weight:500;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border-radius:999px;
+  padding:10px 15px;
+  font-size:12px;
+  font-weight:500;
   border:1px solid var(--line);
 }
 .btn-primary{
-  color:#fff;border-color:transparent;
-  background:linear-gradient(135deg,var(--purple),var(--purple2));
-  box-shadow:0 8px 18px rgba(124,77,255,.20);
+  color:#fff;
+  border-color:transparent;
+  background:linear-gradient(135deg,var(--purple),var(--purple-2));
+  box-shadow:0 8px 18px rgba(123,77,255,.22);
 }
-.btn-soft{background:#faf7ff;color:var(--deep)}
-.section{margin-top:28px}
+.btn-soft{
+  background:#f7f3ff;
+  color:var(--deep);
+}
 .section-head{
-  display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:11px
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:12px;
+  margin-bottom:12px;
 }
-.section h2{
+.section-head h2{
   margin:0;
   font-size:19px;
-  font-weight:500;
+  font-weight:700;
   letter-spacing:-.025em;
   color:var(--deep);
 }
-.section-head span{color:var(--muted);font-size:10px}
-.services{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:9px
+.section-head span{
+  color:#877a9d;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:600;
 }
-.service{ 
-  border:1px solid var(--line); 
-  background:linear-gradient(180deg,#fff,#fbf9ff); 
-  border-radius:15px;
-  padding:0;
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.service{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(249,245,255,.93);
   overflow:hidden;
 }
-
 .service img{
   width:100%;
-  height:150px;
+  aspect-ratio:4/3;
   object-fit:cover;
   display:block;
+  filter:saturate(.82) hue-rotate(-8deg);
 }
-
+.service-body{
+  padding:14px;
+}
 .service strong{
   display:block;
-  font-size:13px;
-  font-weight:500;
   color:var(--deep);
-  padding:12px 14px 0;
+  font-size:13px;
+  font-weight:600;
 }
-
 .service span{
   display:block;
-  font-size:11px;
   color:var(--muted);
-  padding:3px 14px 14px;
+  font-size:12px;
+  margin-top:4px;
 }
-
-.service strong{display:block;font-size:13px;font-weight:500;color:var(--deep)}
-.service span{display:block;font-size:11px;color:var(--muted);margin-top:3px}
 .work-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:9px
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 .work-card{
-  aspect-ratio:1/1;
-  border-radius:15px;
-  border:1px dashed #d9ccef;
-  background:
-    linear-gradient(145deg,rgba(124,77,255,.05),rgba(159,122,234,.02)),
-    #fcfbff;
-  display:flex;align-items:flex-end;
+  min-height:205px;
+  border-radius:16px;
+  border:1px dashed #d7c6f4;
+  background:linear-gradient(180deg,#faf7ff,#f4effd);
   padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
 }
-.work-card span{
-  font-size:10px;color:#8d80a0;
-  background:rgba(255,255,255,.82);
-  padding:5px 7px;border-radius:999px;
+.work-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center, rgba(123,77,255,.08), transparent 40%);
 }
-.note{
-  margin-top:10px;color:var(--muted);font-size:11px
+.placeholder-icon{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:#c3b5de;
+  font-size:42px;
+}
+.work-meta{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  color:#8a7fa1;
+}
+.arrow{
+  width:24px;height:24px;border-radius:50%;
+  background:rgba(255,255,255,.9);
+  border:1px solid #e2d5f5;
+  display:grid;
+  place-items:center;
+  font-size:13px;
 }
 .cta{
-  margin-top:30px;
-  border:1px solid #ddd0f0;
-  background:linear-gradient(135deg,#f8f3ff,#f2ebff);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(246,241,255,.97),rgba(238,231,255,.97));
   border-radius:20px;
   padding:22px;
-  display:flex;justify-content:space-between;align-items:center;gap:18px;
 }
 .cta h3{
-  margin:0 0 5px;font-size:17px;font-weight:500;color:var(--deep)
+  margin:0 0 5px;
+  font-size:17px;
+  font-weight:700;
+  color:var(--deep);
 }
-.cta p{margin:0;color:var(--muted);font-size:12px;max-width:430px}
+.cta p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  max-width:430px;
+}
 .footer{
-  text-align:center;color:#a397b1;font-size:10px;margin-top:14px
+  text-align:center;
+  color:#f4efff;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-top:14px;
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
 }
-@media(max-width:640px){
-  .card{padding:18px}
-  .hero{grid-template-columns:112px 1fr;gap:15px;align-items:start}
-  .photo{width:112px;height:138px;border-radius:16px}
-  .badge{left:8px;bottom:8px;font-size:8px;padding:4px 6px}
-  h1{font-size:28px}
+@media(max-width:680px){
+  .section-card{padding:18px}
+  .hero{grid-template-columns:110px 1fr;gap:16px;align-items:start}
+  .photo{width:110px;height:140px;border-radius:16px}
+  .badge{left:8px;bottom:8px;font-size:8px;padding:4px 7px}
+  .hero-right{grid-template-columns:1fr}
+  .sidewords{display:none}
+  h1{font-size:30px}
   .services,.work-grid{grid-template-columns:1fr}
-  .cta{align-items:flex-start;flex-direction:column}
+  .cta{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
-
 <body>
 <div class="wrap">
 
   <div class="topbar">
     <div class="brand"><span class="dot"></span><span>Arrif</span></div>
-    <div class="location">Singapore · Barber</div>
+    <div>Singapore · Barber</div>
   </div>
 
-  <main class="card">
-
+  <main class="section-card">
     <section class="hero">
       <div class="photo-wrap">
         <div class="photo">
-          <img src="arrif2.jpg" alt="Arrif, barber in Singapore">
+          <img src="arrif.jpg" alt="Arrif, barber in Singapore">
         </div>
         <div class="badge">Singapore</div>
       </div>
 
-      <div>
-        <div class="eyebrow">Independent barber</div>
-        <h1>Hey, I’m Arrif.</h1>
+      <div class="hero-right">
+        <div>
+          <div class="eyebrow">Independent Barber</div>
+          <h1>Hey, I’m Arrif.</h1>
+          <p>I’m a barber based in Singapore. I like cuts that feel clean, sharp and easy to wear every day.</p>
+          <p class="soft">Nothing overcomplicated — just a good cut, a fresh look and something that suits you.</p>
 
-        <p>I’m a barber based in Singapore. I like cuts that feel clean, sharp and easy to wear every day.</p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="booking.html">Book a cut →</a>
+            <a class="btn btn-soft" href="#work">See my work</a>
+          </div>
+        </div>
 
-        <p class="soft">Nothing overcomplicated — just a good cut, a fresh look and something that suits you.</p>
-
-        <div class="hero-links">
-          <a class="btn btn-primary" href="booking.html">Book a cut</a>
-          <a class="btn btn-soft" href="#work">See my work</a>
+        <div class="sidewords">
+          CLEAN<br>
+          SHARP<br>
+          CONFIDENT<br>
+          ALWAYS<br>
+          A GOOD CUT
         </div>
       </div>
     </section>
+  </main>
 
-    <section class="section">
-      <div class="section-head">
-        <h2>What I do</h2>
-        <span>simple grooming, done properly</span>
+  <section class="section-card">
+    <div class="section-head">
+      <h2>What I do</h2>
+      <span>Simple grooming, done properly</span>
+    </div>
+
+    <div class="services">
+      <article class="service">
+        <img src="arrif.jpg" alt="Haircut service">
+        <div class="service-body">
+          <strong>Haircut</strong>
+          <span>Clean everyday cuts with a neat finish.</span>
+        </div>
+      </article>
+
+      <article class="service">
+        <img src="arrif.jpg" alt="Fade and taper service">
+        <div class="service-body">
+          <strong>Fade / Taper</strong>
+          <span>Soft blends, sharp edges and modern shape.</span>
+        </div>
+      </article>
+
+      <article class="service">
+        <img src="arrif.jpg" alt="Beard tidy-up service">
+        <div class="service-body">
+          <strong>Beard Tidy-up</strong>
+          <span>Simple beard cleanup and shaping.</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-card" id="work">
+    <div class="section-head">
+      <h2>Recent work</h2>
+      <span>Real people. Real results.</span>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="placeholder-icon">🖼</div>
+        <div class="work-meta"><span>Cut 01</span><span class="arrow">↗</span></div>
       </div>
 
-<div class="services"> 
-
-  <div class="service"> 
-    <img src="images/haircut.jpg" alt="Haircut service">
-    <strong>Haircut</strong> 
-    <span>Clean everyday cuts with a neat finish.</span> 
-  </div> 
-
-  <div class="service"> 
-    <img src="images/fade.jpg" alt="Fade and taper service">
-    <strong>Fade / Taper</strong> 
-    <span>Soft blends, sharp edges and modern shape.</span> 
-  </div> 
-
-  <div class="service"> 
-    <img src="images/beard.jpg" alt="Beard tidy-up service">
-    <strong>Beard Tidy-up</strong> 
-    <span>Simple beard cleanup and shaping.</span> 
-  </div> 
-
-</div>
-    </section>
-
-    <section class="section" id="work">
-      <div class="section-head">
-        <h2>Recent work</h2>
-        <span>add haircut photos later</span>
+      <div class="work-card">
+        <div class="placeholder-icon">🖼</div>
+        <div class="work-meta"><span>Cut 02</span><span class="arrow">↗</span></div>
       </div>
 
-      <div class="work-grid">
-        <div class="work-card"><span>cut 01</span></div>
-        <div class="work-card"><span>cut 02</span></div>
-        <div class="work-card"><span>cut 03</span></div>
+      <div class="work-card">
+        <div class="placeholder-icon">🖼</div>
+        <div class="work-meta"><span>Cut 03</span><span class="arrow">↗</span></div>
       </div>
+    </div>
+  </section>
 
-      <div class="note">You can replace these boxes with Arrif’s real haircut photos anytime.</div>
-    </section>
-
-    <section class="cta">
+  <section class="section-card">
+    <div class="cta">
       <div>
         <h3>Need a fresh cut?</h3>
         <p>Send a quick booking request and Arrif can confirm the available slot with you.</p>
       </div>
       <a class="btn btn-primary" href="booking.html">Book with Arrif →</a>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <div class="footer">Haircuts × Good vibes × Singapore</div>
 
-  <div class="footer">clean cuts · easy style · Singapore</div>
 </div>
 </body>
 </html>
